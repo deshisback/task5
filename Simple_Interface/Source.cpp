@@ -25,9 +25,9 @@ public:
 
 	Human(int _Age, string _Name, int _Heigh)
 	{
-		SetAge(_Age);
-		SetName(_Name);
-		SetHeigh(_Heigh);
+		Age = _Age;
+		Name = _Name;
+		Heigh = _Heigh;
 	}
 
 	int GetAge()
@@ -80,7 +80,27 @@ public:
 	}
 };
 
-class Student : public Human
+class Study
+{
+	void virtual Learn() = 0;
+	void virtual Deduction() = 0;
+};
+
+class University : public Study
+{
+public:
+	void Learn()
+	{
+		cout << "Студент учится";
+	}
+
+	void Deduction()
+	{
+		cout << "Студент отчисляется";
+	}
+};
+
+class Student : public Human, public University
 {
 private:
 	int Course;
@@ -113,12 +133,17 @@ public:
 	{
 		return University;
 	}
+
+	
 };
 
+
 int main() {
+	setlocale(LC_ALL, "ru");
 	string name = "Yakov";
 	string uni = "FEFU";
 	Human human(15, name, 163);
 	Student s(15, name, 163, 3, uni);
-	cout << s.GetAge();
+	cout << s.GetAge() << endl;
+	
 }
