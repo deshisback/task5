@@ -91,12 +91,12 @@ class University : public Study
 public:
 	void Learn()
 	{
-		cout << "Студент учится";
+		cout << "Student learns";
 	}
 
 	void Deduction()
 	{
-		cout << "Студент отчисляется";
+		cout << "The student is deduct";
 	}
 };
 
@@ -137,6 +137,28 @@ public:
 	
 };
 
+class InternationalStudent : public Student
+{
+private:
+	string Country;
+public:
+	InternationalStudent(int _Age, string _Name, int _Heigh, int _Course, string _University, string _Country) : 
+		Student(_Age, _Name, _Heigh, _Course, _University)
+	{
+		Country = _Country;
+	}
+
+	string GetCountry()
+	{
+		return Country;
+	}
+
+	void Speaking()
+	{
+		cout << "Moya tvoya ne ponimat'";
+	}
+};
+
 
 int main() {
 	setlocale(LC_ALL, "ru");
@@ -145,5 +167,4 @@ int main() {
 	Human human(15, name, 163);
 	Student s(15, name, 163, 3, uni);
 	cout << s.GetAge() << endl;
-	
 }
